@@ -40,7 +40,7 @@ export function registerContext(program: Command): void {
 
   ctx.command('log')
     .description('query the context log')
-    .option('-p, --project <slug>', 'project slug (default: current default project)')
+    .option('--project <slug>', 'project slug (default: current default project)')
     .option('--since <iso-or-duration>', 'lower bound, e.g. 2026-01-01T00:00:00Z or 7d')
     .option('--limit <n>', 'max rows', '100')
     .option('--json', 'json output')

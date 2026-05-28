@@ -14,7 +14,7 @@ export function registerMilestone(program: Command): void {
 
   ms.command('ls [slug]')
     .description('list milestones for a project')
-    .option('-p, --project <slug>', 'project slug')
+    .option('--project <slug>', 'project slug')
     .option('--json', 'json output')
     .action(async (slug: string | undefined, opts) => {
       const cfg = requireConfig();
@@ -27,7 +27,7 @@ export function registerMilestone(program: Command): void {
 
   ms.command('new <title>')
     .description('create a new milestone')
-    .option('-p, --project <slug>', 'project slug')
+    .option('--project <slug>', 'project slug')
     .option('-g, --goal <goal>', 'milestone goal')
     .option('--due <yyyy-mm-dd>', 'due date')
     .option('--json', 'json output')

@@ -17,7 +17,7 @@ export function registerKb(program: Command): void {
 
   kb.command('show [slug]')
     .description('show the knowledge base')
-    .option('-p, --project <slug>', 'project slug')
+    .option('--project <slug>', 'project slug')
     .option('--json', 'json output')
     .action(async (slug: string | undefined, opts) => {
       const cfg = requireConfig();
@@ -37,7 +37,7 @@ export function registerKb(program: Command): void {
   const rm = kb.command('rm').description('remove an item from kb');
 
   add.command('repo <label> <url>')
-    .option('-p, --project <slug>', 'project slug')
+    .option('--project <slug>', 'project slug')
     .action(async (label: string, url: string, opts) => {
       const cfg = requireConfig();
       const s = resolveSlug(undefined, opts, cfg);
@@ -49,7 +49,7 @@ export function registerKb(program: Command): void {
     });
 
   rm.command('repo <label>')
-    .option('-p, --project <slug>', 'project slug')
+    .option('--project <slug>', 'project slug')
     .action(async (label: string, opts) => {
       const cfg = requireConfig();
       const s = resolveSlug(undefined, opts, cfg);
@@ -61,7 +61,7 @@ export function registerKb(program: Command): void {
     });
 
   add.command('url <label> <url>')
-    .option('-p, --project <slug>', 'project slug')
+    .option('--project <slug>', 'project slug')
     .action(async (label: string, url: string, opts) => {
       const cfg = requireConfig();
       const s = resolveSlug(undefined, opts, cfg);
@@ -73,7 +73,7 @@ export function registerKb(program: Command): void {
     });
 
   rm.command('url <label>')
-    .option('-p, --project <slug>', 'project slug')
+    .option('--project <slug>', 'project slug')
     .action(async (label: string, opts) => {
       const cfg = requireConfig();
       const s = resolveSlug(undefined, opts, cfg);
@@ -85,7 +85,7 @@ export function registerKb(program: Command): void {
     });
 
   add.command('tech <name>')
-    .option('-p, --project <slug>', 'project slug')
+    .option('--project <slug>', 'project slug')
     .action(async (name: string, opts) => {
       const cfg = requireConfig();
       const s = resolveSlug(undefined, opts, cfg);
@@ -97,7 +97,7 @@ export function registerKb(program: Command): void {
     });
 
   rm.command('tech <name>')
-    .option('-p, --project <slug>', 'project slug')
+    .option('--project <slug>', 'project slug')
     .action(async (name: string, opts) => {
       const cfg = requireConfig();
       const s = resolveSlug(undefined, opts, cfg);
@@ -110,7 +110,7 @@ export function registerKb(program: Command): void {
 
   kb.command('note <text>')
     .description('append a note to kb and the project context log')
-    .option('-p, --project <slug>', 'project slug')
+    .option('--project <slug>', 'project slug')
     .action(async (text: string, opts) => {
       const cfg = requireConfig();
       const s = resolveSlug(undefined, opts, cfg);

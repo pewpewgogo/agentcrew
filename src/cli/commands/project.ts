@@ -24,7 +24,7 @@ export function registerProject(program: Command): void {
 
   project.command('show [slug]')
     .description('show a project, its kb, and members')
-    .option('-p, --project <slug>', 'project slug')
+    .option('--project <slug>', 'project slug')
     .option('--json', 'json output')
     .action(async (slug: string | undefined, opts) => {
       const cfg = requireConfig();

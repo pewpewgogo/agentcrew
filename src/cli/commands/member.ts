@@ -21,7 +21,7 @@ export function registerMember(program: Command): void {
 
   member.command('ls [slug]')
     .description('list members of a project')
-    .option('-p, --project <slug>', 'project slug')
+    .option('--project <slug>', 'project slug')
     .option('--json', 'json output')
     .action(async (slug: string | undefined, opts) => {
       const cfg = requireConfig();
@@ -34,7 +34,7 @@ export function registerMember(program: Command): void {
 
   member.command('add <email>')
     .description('add a member to a project by email')
-    .option('-p, --project <slug>', 'project slug')
+    .option('--project <slug>', 'project slug')
     .option('-r, --role <role>', 'role: owner|member|viewer', 'member')
     .option('--json', 'json output')
     .action(async (email: string, opts) => {
@@ -48,7 +48,7 @@ export function registerMember(program: Command): void {
 
   member.command('rm <email>')
     .description('remove a member by email')
-    .option('-p, --project <slug>', 'project slug')
+    .option('--project <slug>', 'project slug')
     .action(async (email: string, opts) => {
       const cfg = requireConfig();
       const s = resolveSlug(undefined, opts, cfg);

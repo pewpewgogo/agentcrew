@@ -26,7 +26,7 @@ export function registerTask(program: Command): void {
 
   task.command('ls [slug]')
     .description('list tasks for a project')
-    .option('-p, --project <slug>', 'project slug')
+    .option('--project <slug>', 'project slug')
     .option('--mine', 'only my tasks')
     .option('--status <status>', 'todo|doing|done|blocked')
     .option('--milestone <id>', 'filter by milestone id')
@@ -47,11 +47,11 @@ export function registerTask(program: Command): void {
 
   task.command('new <title>')
     .description('create a new task')
-    .option('-p, --project <slug>', 'project slug')
+    .option('--project <slug>', 'project slug')
     .option('-g, --goal <goal>', 'task goal')
     .option('-d, --description <desc>', 'task description')
     .option('-m, --milestone <id>', 'milestone id')
-    .option('--priority <p>', 'low|med|high', 'med')
+    .option('-p, --priority <priority>', 'low|med|high', 'med')
     .option('--assignee <email>', 'assignee email')
     .option('--json', 'json output')
     .action(async (title: string, opts) => {
@@ -81,13 +81,13 @@ export function registerTask(program: Command): void {
       if (t.description) process.stdout.write(`\n${t.description}\n`);
       if (Array.isArray(t.context) && t.context.length) {
         process.stdout.write(`\ncontext:\n`);
-        for (const c of t.context) process.stdout.write(`  - ${c.created_at}: ${c.note}\n`);
+        for (const c of t.context) process.stdout.write(`  - ${c.createdAt}: ${c.note}\n`);
       }
     });
 
   task.command('claim <id>')
     .description('assign a task to yourself')
-    .option('-p, --project <slug>', 'project slug for resolving your user id')
+    .option('--project <slug>', 'project slug for resolving your user id')
     .option('--json', 'json output')
     .action(async (id: string, opts) => {
       const cfg = requireConfig();
@@ -109,12 +109,12 @@ export function registerTask(program: Command): void {
 
   task.command('set <id>')
     .description('update a task')
-    .option('-p, --project <slug>', 'project slug for resolving --assignee email')
+    .option('--project <slug>', 'project slug for resolving --assignee email')
     .option('--title <title>', 'new title')
     .option('--goal <goal>', 'new goal')
     .option('--description <desc>', 'new description')
     .option('--status <status>', 'todo|doing|done|blocked')
-    .option('--priority <p>', 'low|med|high')
+    .option('-p, --priority <priority>', 'low|med|high')
     .option('--assignee <email>', 'assignee email')
     .option('--json', 'json output')
     .action(async (id: string, opts) => {
