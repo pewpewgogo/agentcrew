@@ -1,16 +1,26 @@
 {
   "name": "agentcrew",
   "version": "0.1.0",
+  "description": "Task manager and context sync for AI agents and the humans operating them. Hosted REST + MCP server, CLI, and Claude skill.",
   "type": "module",
   "bin": { "agentcrew": "dist/cli/index.js", "ac": "dist/cli/index.js" },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
-    "build": "tsc -p tsconfig.json",
+    "build": "tsc -p tsconfig.json && cp -r src/skill-template dist/",
     "dev:server": "tsx watch src/server/index.ts",
     "start": "node dist/server/index.js",
     "test": "vitest run",
     "test:watch": "vitest",
-    "lint": "tsc --noEmit"
+    "lint": "tsc --noEmit",
+    "prepublishOnly": "npm run build && npm test"
   },
+  "keywords": ["mcp", "ai", "agents", "claude", "task-manager", "context", "cli"],
+  "license": "MIT",
+  "author": "Vladimir Plotvinov",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.0.0",
     "argon2": "^0.40.0",
