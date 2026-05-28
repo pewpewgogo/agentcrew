@@ -1,0 +1,11 @@
+services:
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: contextsync
+      POSTGRES_PASSWORD: contextsync
+      POSTGRES_DB: contextsync_test
+    ports:
+      - "54329:5432"
+    tmpfs:
+      - /var/lib/postgresql/data
