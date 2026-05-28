@@ -7,7 +7,7 @@ Project → milestones → tasks, plus a per-project knowledge base (repos, urls
 ## Install the skill (for Claude Code)
 
 ```
-npx agentcrew init
+npx @pewpewgogo1/agentcrew init
 ```
 
 Prompts for your server URL, email/password, and an optional default project, then:
