@@ -1,5 +1,6 @@
 import Fastify, { type FastifyInstance } from 'fastify';
 import type { Pool } from 'pg';
+import { ZodError } from 'zod';
 import { AppError } from '../shared/errors.js';
 import { AuthService } from './auth/service.js';
 import { ProjectService } from './projects/service.js';
@@ -43,6 +44,11 @@ export async function buildApp(pool: Pool): Promise<FastifyInstance> {
   app.setErrorHandler((err, _req, reply) => {
     if (err instanceof AppError) {
       return reply.status(err.status).send({ error: { code: err.code, message: err.message, details: err.details } });
+    }
+    if (err instanceof ZodError) {
+      return reply.status(422).send({
+        error: { code: 'validation_failed', message: 'invalid input', details: err.issues },
+      });
     }
     if ((err as any).validation) {
       return reply.status(422).send({
