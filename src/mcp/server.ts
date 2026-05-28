@@ -21,7 +21,7 @@ export async function registerMcp(app: FastifyInstance, services: Services): Pro
     if (!user) return reply.status(401).send({ error: { code: 'unauthorized', message: 'invalid token' } });
     const ctx = { userId: user.id, authorKind: token.startsWith('cs_s_') ? 'human' as const : 'agent' as const };
 
-    const server = new Server({ name: 'contextsync', version: '0.1.0' }, { capabilities: { tools: {} } });
+    const server = new Server({ name: 'agentcrew', version: '0.1.0' }, { capabilities: { tools: {} } });
 
     server.setRequestHandler(ListToolsRequestSchema, async () => ({
       tools: Object.entries(tools).map(([name, t]) => ({

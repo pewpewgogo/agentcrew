@@ -1,8 +1,8 @@
 {
-  "name": "contextsync",
+  "name": "agentcrew",
   "version": "0.1.0",
   "type": "module",
-  "bin": { "contextsync": "dist/cli/index.js", "cs": "dist/cli/index.js" },
+  "bin": { "agentcrew": "dist/cli/index.js", "ac": "dist/cli/index.js" },
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "dev:server": "tsx watch src/server/index.ts",

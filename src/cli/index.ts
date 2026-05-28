@@ -11,7 +11,7 @@ import { registerContext } from './commands/context.js';
 import { runInit } from '../init/index.js';
 
 const program = new Command();
-program.name('contextsync').description('contextsync CLI').version('0.1.0');
+program.name('agentcrew').description('agentcrew CLI').version('0.1.0');
 
 program.command('init')
   .description('install skill, register MCP server, save config')

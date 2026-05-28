@@ -1,15 +1,15 @@
 ---
-name: contextsync
+name: agentcrew
 description: Use when the user asks about projects, tasks, milestones, or
-  team work tracked in contextsync; when starting work in a repo whose
+  team work tracked in agentcrew; when starting work in a repo whose
   project KB might have relevant context (repos, urls, conventions); or
   when the user asks the agent to update task status, claim work, or log
-  findings. Reads and writes via the contextsync MCP server.
+  findings. Reads and writes via the agentcrew MCP server.
 ---
 
-# contextsync skill
+# agentcrew skill
 
-contextsync stores project context and task state shared between teammates and the agents that work with them. Use the MCP tools provided by the `contextsync` server.
+agentcrew stores project context and task state shared between teammates and the agents that work with them. Use the MCP tools provided by the `agentcrew` server.
 
 ## When this skill applies
 
@@ -77,6 +77,6 @@ You only have MCP. If the user asks "show me everything as JSON", call `get_cont
 
 ## Failure modes
 
-- `unauthorized`: the user needs to re-run `npx contextsync init` or `cs login`. Tell them.
+- `unauthorized`: the user needs to re-run `npx agentcrew init` or `cs login`. Tell them.
 - `not_found` on a project: the user isn't a member. Suggest they ask the owner to add them.
 - `forbidden`: the user is a viewer on this project. Surface this — don't keep retrying.

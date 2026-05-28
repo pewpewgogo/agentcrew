@@ -5,7 +5,7 @@ export function upsertMcpEntry(path: string, opts: { url: string; token: string 
   let doc: any = {};
   if (existsSync(path)) doc = JSON.parse(readFileSync(path, 'utf8'));
   doc.mcpServers ??= {};
-  doc.mcpServers.contextsync = {
+  doc.mcpServers.agentcrew = {
     type: 'http',
     url: opts.url,
     headers: { Authorization: `Bearer ${opts.token}` },
@@ -17,8 +17,8 @@ export function upsertMcpEntry(path: string, opts: { url: string; token: string 
 export function removeMcpEntry(path: string): void {
   if (!existsSync(path)) return;
   const doc = JSON.parse(readFileSync(path, 'utf8'));
-  if (doc?.mcpServers?.contextsync) {
-    delete doc.mcpServers.contextsync;
+  if (doc?.mcpServers?.agentcrew) {
+    delete doc.mcpServers.agentcrew;
     writeFileSync(path, JSON.stringify(doc, null, 2), 'utf8');
   }
 }

@@ -9,9 +9,9 @@ describe('skill-install', () => {
     const home = mkdtempSync(join(tmpdir(), 'sk-'));
     try {
       installSkill(home);
-      const path = join(home, '.claude/skills/contextsync/SKILL.md');
+      const path = join(home, '.claude/skills/agentcrew/SKILL.md');
       expect(existsSync(path)).toBe(true);
-      expect(readFileSync(path, 'utf8')).toContain('contextsync');
+      expect(readFileSync(path, 'utf8')).toContain('agentcrew');
     } finally { rmSync(home, { recursive: true, force: true }); }
   });
 
@@ -19,7 +19,7 @@ describe('skill-install', () => {
     const home = mkdtempSync(join(tmpdir(), 'sk-'));
     try {
       installSkill(home);
-      const path = join(home, '.claude/skills/contextsync/SKILL.md');
+      const path = join(home, '.claude/skills/agentcrew/SKILL.md');
       writeFileSync(path, 'local edits');
       const status = installSkill(home, { force: false });
       expect(status).toBe('different');
@@ -31,7 +31,7 @@ describe('skill-install', () => {
     try {
       installSkill(home);
       uninstallSkill(home);
-      const path = join(home, '.claude/skills/contextsync/SKILL.md');
+      const path = join(home, '.claude/skills/agentcrew/SKILL.md');
       expect(existsSync(path)).toBe(false);
     } finally { rmSync(home, { recursive: true, force: true }); }
   });

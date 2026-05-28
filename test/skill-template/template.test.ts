@@ -7,7 +7,7 @@ const path = fileURLToPath(new URL('../../src/skill-template/SKILL.md', import.m
 describe('skill template', () => {
   it('contains required frontmatter and key flows', () => {
     const text = readFileSync(path, 'utf8');
-    expect(text).toMatch(/^---\nname: contextsync/);
+    expect(text).toMatch(/^---\nname: agentcrew/);
     expect(text).toMatch(/description:/);
     expect(text).toMatch(/list_projects/);
     expect(text).toMatch(/add_context/);

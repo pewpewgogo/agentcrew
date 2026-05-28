@@ -3,7 +3,7 @@ import { readdir, readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 
 export const TEST_DB_URL =
-  process.env.TEST_DB_URL ?? 'postgres://contextsync:contextsync@localhost:54329/contextsync_test';
+  process.env.TEST_DB_URL ?? 'postgres://agentcrew:agentcrew@localhost:54329/agentcrew_test';
 
 export async function freshSchema(): Promise<Pool> {
   const pool = new Pool({ connectionString: TEST_DB_URL });

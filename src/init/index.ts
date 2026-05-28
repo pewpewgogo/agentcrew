@@ -6,7 +6,7 @@ import { Api } from '../cli/api.js';
 import { upsertMcpEntry, removeMcpEntry } from './claude-config.js';
 import { installSkill, uninstallSkill, type InstallStatus } from './skill-install.js';
 
-const CFG_REL = '.contextsync/config.json';
+const CFG_REL = '.agentcrew/config.json';
 const CC_REL = '.claude.json';
 
 export interface InitOpts { upgrade?: boolean; uninstall?: boolean }
@@ -60,7 +60,7 @@ export async function runInitWithHome(home: string, opts: InitOpts = {}): Promis
     const ok = (await prompts({ type: 'confirm', name: 'v', message: 'SKILL.md has local edits. Overwrite?' })).v as boolean;
     if (ok) installSkill(home, { force: true });
   }
-  process.stdout.write(`✓ wrote ${join(home, '.claude/skills/contextsync/SKILL.md')}\n`);
+  process.stdout.write(`✓ wrote ${join(home, '.claude/skills/agentcrew/SKILL.md')}\n`);
 
   upsertMcpEntry(ccPath, { url: `${serverUrl.replace(/\/$/, '')}/mcp`, token: apiKey });
   process.stdout.write(`✓ registered MCP server in ${ccPath}\n`);

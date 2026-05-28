@@ -5,7 +5,7 @@ import { join } from 'node:path';
 import { upsertMcpEntry, removeMcpEntry } from '../../src/init/claude-config.js';
 
 describe('claude-config', () => {
-  it('upserts contextsync entry preserving siblings', () => {
+  it('upserts agentcrew entry preserving siblings', () => {
     const dir = mkdtempSync(join(tmpdir(), 'cc-'));
     try {
       const path = join(dir, 'claude.json');
@@ -14,8 +14,8 @@ describe('claude-config', () => {
       const got = JSON.parse(readFileSync(path, 'utf8'));
       expect(got.foo).toBe(1);
       expect(got.mcpServers.other.command).toBe('x');
-      expect(got.mcpServers.contextsync.url).toBe('https://x/mcp');
-      expect(got.mcpServers.contextsync.headers.Authorization).toBe('Bearer cs_k_x');
+      expect(got.mcpServers.agentcrew.url).toBe('https://x/mcp');
+      expect(got.mcpServers.agentcrew.headers.Authorization).toBe('Bearer cs_k_x');
     } finally { rmSync(dir, { recursive: true, force: true }); }
   });
 
@@ -28,16 +28,16 @@ describe('claude-config', () => {
     } finally { rmSync(dir, { recursive: true, force: true }); }
   });
 
-  it('removeMcpEntry deletes only contextsync', () => {
+  it('removeMcpEntry deletes only agentcrew', () => {
     const dir = mkdtempSync(join(tmpdir(), 'cc-'));
     try {
       const path = join(dir, 'claude.json');
       writeFileSync(path, JSON.stringify({
-        mcpServers: { contextsync: { url: 'x' }, other: { command: 'y' } },
+        mcpServers: { agentcrew: { url: 'x' }, other: { command: 'y' } },
       }));
       removeMcpEntry(path);
       const got = JSON.parse(readFileSync(path, 'utf8'));
-      expect(got.mcpServers.contextsync).toBeUndefined();
+      expect(got.mcpServers.agentcrew).toBeUndefined();
       expect(got.mcpServers.other).toBeDefined();
     } finally { rmSync(dir, { recursive: true, force: true }); }
   });

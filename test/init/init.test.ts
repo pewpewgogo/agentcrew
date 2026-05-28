@@ -19,10 +19,10 @@ describe('init', () => {
       await asUser(app, 'init@t.co');
       prompts.inject([baseUrl, 'init@t.co', 'password123', '']);
       await runInitWithHome(home);
-      expect(existsSync(join(home, '.contextsync/config.json'))).toBe(true);
-      expect(existsSync(join(home, '.claude/skills/contextsync/SKILL.md'))).toBe(true);
+      expect(existsSync(join(home, '.agentcrew/config.json'))).toBe(true);
+      expect(existsSync(join(home, '.claude/skills/agentcrew/SKILL.md'))).toBe(true);
       const claudeCfg = JSON.parse(readFileSync(join(home, '.claude.json'), 'utf8'));
-      expect(claudeCfg.mcpServers.contextsync.url).toContain('/mcp');
+      expect(claudeCfg.mcpServers.agentcrew.url).toContain('/mcp');
     } finally { rmSync(home, { recursive: true, force: true }); }
   });
 });

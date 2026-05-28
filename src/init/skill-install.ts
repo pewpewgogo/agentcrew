@@ -7,7 +7,7 @@ export type InstallStatus = 'created' | 'updated' | 'unchanged' | 'different';
 const TEMPLATE_PATH = fileURLToPath(new URL('../skill-template/SKILL.md', import.meta.url));
 
 function targetPath(home: string): string {
-  return join(home, '.claude/skills/contextsync/SKILL.md');
+  return join(home, '.claude/skills/agentcrew/SKILL.md');
 }
 
 export function installSkill(home: string, opts: { force?: boolean } = {}): InstallStatus {

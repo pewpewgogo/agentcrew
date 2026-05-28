@@ -8,7 +8,7 @@ export interface Config {
   defaultProject?: string;
 }
 
-export const DEFAULT_CONFIG_PATH = `${homedir()}/.contextsync/config.json`;
+export const DEFAULT_CONFIG_PATH = `${homedir()}/.agentcrew/config.json`;
 
 export function loadConfig(path: string = DEFAULT_CONFIG_PATH): Config | null {
   if (!existsSync(path)) return null;
@@ -23,6 +23,6 @@ export function saveConfig(path: string = DEFAULT_CONFIG_PATH, cfg: Config): voi
 
 export function requireConfig(path: string = DEFAULT_CONFIG_PATH): Config {
   const c = loadConfig(path);
-  if (!c?.token) throw new Error('Not logged in. Run `cs login` or `npx contextsync init` first.');
+  if (!c?.token) throw new Error('Not logged in. Run `cs login` or `npx agentcrew init` first.');
   return c;
 }
