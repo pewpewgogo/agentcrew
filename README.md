@@ -44,7 +44,7 @@ ac ctx log --since 7d
 ## Run your own server
 
 ```bash
-git clone https://github.com/<you>/agentcrew
+git clone https://github.com/pewpewgogo/agentcrew
 cd agentcrew
 docker compose -f docker-compose.test.yml up -d
 npm install
