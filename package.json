@@ -1,5 +1,5 @@
 {
-  "name": "@pewpewgogo1/agentcrew",
+  "name": "@crewagent/agentcrew",
   "version": "0.1.0",
   "description": "Task manager and context sync for AI agents and the humans operating them. Hosted REST + MCP server, CLI, and Claude skill.",
   "type": "module",
